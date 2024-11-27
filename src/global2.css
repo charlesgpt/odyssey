@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Greek-Freak";
+  src: url("/public/Greek-Freak.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Xtra";
+  src: url("/public/Xtra.ttf");
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-xtra: Xtra;
+  --font-gemfont-one: "GemFont One";
+  --font-greek-freak: Greek-Freak;
+
+  /* font sizes */
+  --font-size-6xl: 25px;
+  --font-size-9xl: 28px;
+  --font-size-5xl: 24px;
+  --font-size-13xl: 32px;
+  --font-size-xl: 20px;
+  --font-size-base: 16px;
+  --font-size-11xl: 30px;
+  --font-size-lgi: 19px;
+  --font-size-3xl: 22px;
+  --font-size-lg: 18px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-saddlebrown-100: #744a0f;
+  --color-saddlebrown-200: #492b01;
+  --color-saddlebrown-300: #492b00;
+  --color-gray: rgba(0, 0, 0, 0.25);
+  --color-darkgoldenrod: rgba(218, 138, 28, 0.05);
+
+  /* Gaps */
+  --gap-10xl: 29px;
+  --gap-xl: 20px;
+  --gap-6xs: 7px;
+  --gap-2xs: 11px;
+  --gap-base-5: 16.5px;
+  --gap-6xl: 25px;
+  --gap-7xs: 6px;
+  --gap-10xs: 3px;
+  --gap-2xl-5: 21.5px;
+  --gap-3xs: 10px;
+
+  /* Paddings */
+  --padding-11xs: 2px;
+  --padding-9xs: 4px;
+  --padding-7xs: 6px;
+  --padding-12xs: 1px;
+  --padding-10xl: 29px;
+  --padding-10xs: 3px;
+  --padding-8xs: 5px;
+  --padding-xl: 20px;
+  --padding-smi: 13px;
+  --padding-5xl: 24px;
+  --padding-smi-2: 12.2px;
+  --padding-4xl: 23px;
+  --padding-57xl: 76px;
+  --padding-58xl: 77px;
+  --padding-12xl: 31px;
+  --padding-11xl-5: 30.5px;
+  --padding-11xl: 30px;
+  --padding-26xl: 45px;
+  --padding-27xl: 46px;
+  --padding-mini: 15px;
+
+  /* Border radiuses */
+  --br-5xs: 8px;
+}

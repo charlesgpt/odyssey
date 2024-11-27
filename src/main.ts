@@ -7,6 +7,7 @@ import convo2 from "./pages/convo2.vue";
 import convo3 from "./pages/convo3.vue";
 import Dialogue from "./pages/Dialogue.vue";
 import WelcomeScreen from "./pages/WelcomeScreen.vue";
+import RevisedLeaderboardPage from "./pages/RevisedLeaderboardPage.vue";
 import Bear from "./pages/Bear.vue";
 import DiceRoll from "./pages/DiceRoll.vue";
 import Choppy from "./pages/Choppy.vue";
@@ -14,7 +15,13 @@ import Convo from "./pages/Convo.vue";
 import Bull from "./pages/Bull.vue";
 import FlipCoinHeads from "./pages/FlipCoinHeads.vue";
 import Stats from "./pages/Stats.vue";
+import Quest from "./pages/Quest.vue";
+import Referral from "./pages/Referral.vue";
+import ConnectWallet from "./pages/ConnectWallet.vue";
 import "./global.css";
+import "./global2.css";
+import "./global3.css";
+
 
 interface Route {
   path: string;
@@ -82,6 +89,26 @@ const routes: Route[] = [
     path: "/optimalstrategist",
     name: "Stats",
     component: Stats,
+  },
+  {
+    path: "/referral",
+    name: "Referral",
+    component: Referral,
+  },
+  {
+    path: "/leaderboard",
+    name: "RevisedLeaderboardPage",
+    component: RevisedLeaderboardPage,
+  },
+  {
+    path: "/connectwallet",
+    name: "ConnectWallet",
+    component: ConnectWallet,
+  },
+  {
+    path: "/quest",
+    name: "Quest",
+    component: Quest,
   },
 ];
 

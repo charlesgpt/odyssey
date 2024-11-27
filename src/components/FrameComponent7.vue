@@ -86,9 +86,9 @@ export default defineComponent({
     let intervalId: NodeJS.Timer;
 
     const marketProbabilities = {
-      bull: { win: 0.70, blackSwan: 0.01 },
-      bear: { win: 0.53, blackSwan: 0.05 },
-      choppy: { win: 0.60, blackSwan: 0.10 }
+      BULL_MARKET: { win: 0.70, blackSwan: 0.01 },
+      BEAR_MARKET: { win: 0.53, blackSwan: 0.05 },
+      CHOPPY_MARKET: { win: 0.60, blackSwan: 0.10 }
     };
 
     const canFlip = computed(() => {
@@ -140,6 +140,9 @@ export default defineComponent({
           emit('coinFlipped', { type: 'tails', amount: -betAmount.value });
         }
       }
+
+      // Reset bet amount after flip
+      betAmount.value = 0;
 
       await new Promise(resolve => setTimeout(resolve, 2000));
       isFlipping.value = false;
@@ -246,10 +249,11 @@ export default defineComponent({
   .bet-input {
     width: 85px;
     border-radius: var(--br-5xs);
+    text-align: center;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     padding: var(--padding-12xs) var(--padding-xs) var(--padding-11xs)
       var(--padding-sm);
     box-sizing: border-box;
@@ -266,9 +270,9 @@ export default defineComponent({
     border-radius: var(--br-5xs);
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: var(--padding-12xs) var(--padding-4xs) var(--padding-11xs)
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-12xs) var(--padding-3xs) var(--padding-11xs)
       var(--padding-3xs);
     position: relative;
     cursor: pointer;
@@ -301,9 +305,9 @@ export default defineComponent({
     border-radius: var(--br-5xs);
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: var(--padding-smi) 0px var(--padding-sm) var(--padding-12xs);
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-12xs) var(--padding-3xs) var(--padding-11xs) var(--padding-3xs);
     box-sizing: border-box;
     position: relative;
     min-width: 55px;
@@ -315,16 +319,18 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--gap-4xs);
+    justify-content: center;
+    padding: 0;
+    max-width: 400px;
+    gap: 20px;
   }
   .bet-button-labels-wrapper {
     align-self: stretch;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: var(--padding-3xs);
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-3xs) 0;
   }
   .button-icon14 {
     height: 103.5px;
@@ -374,13 +380,14 @@ export default defineComponent({
   .bet-input-parent {
     flex: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     align-content: center;
-    gap: var(--gap-4xs);
-    max-width: 100%;
+    gap: 15px;
+    padding: 0;
+    max-width: 400px;
     row-gap: 20px;
   }
   .coin-options-inner {
@@ -405,7 +412,7 @@ export default defineComponent({
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: var(--padding-lg) var(--padding-5xl) 0px;
+    padding: var(--padding-lg) var(--padding-3xs) 0px;
     box-sizing: border-box;
     gap: var(--gap-6xl);
     max-width: 100%;
@@ -447,8 +454,10 @@ export default defineComponent({
     }
 
     .bet-button-labels {
-      gap: var(--gap-3xs);
-      justify-content: space-between;
+      gap: 15px;
+      justify-content: center;
+      max-width: 100%;
+      padding: 0 5px;
     }
   }
 

@@ -1,5 +1,9 @@
 <template>
   <div class="optimalstrategist">
+    <div class="title-container">
+      <img class="title-scroll-icon" alt="" src="/title-scroll@2x.png" />
+      <div class="title-text">Stats</div>
+    </div>
     <img class="bg-icon1" alt="" src="/bg@2x.png" />
     <img class="image-103-icon1" alt="" src="/image-103@2x.png" />
     <img
@@ -31,6 +35,7 @@
         loading="lazy"
         alt=""
         src="/settings-button@2x.png"
+        @click="toggleSettings"
       />
     </main>
     <FrameComponent riskProfile="Risk Profile" />
@@ -63,9 +68,9 @@
                     />
                   </div>
                   <div class="optimal-bet-parent">
-                    <div class="optimal-bet">Optimal Bet</div>
+                    <div class="optimal-bet">Optimal Bet %</div>
                     <div class="optimal-bet-divider-wrapper">
-                      <div class="optimal-bet-divider">{{ stats.optimalBet.toFixed(2) }}</div>
+                      <div class="optimal-bet-divider">{{ stats.optimalBetPercentage.toFixed(1) }}%</div>
                     </div>
                   </div>
                 </div>
@@ -92,7 +97,7 @@
               <div class="frame-wrapper1">
                 <div class="frame-parent10">
                   <div class="wealth-value-wrapper">
-                    <div class="optimal-bet-divider">{{ stats.averageBetPercentage.toFixed(1) }}%</div>
+                    <div class="optimal-bet-divider">{{ (stats.averageBet * 100).toFixed(1) }}%</div>
                   </div>
                   <div class="frame-parent11">
                     <div class="wealth-coin-wrapper">
@@ -133,6 +138,7 @@
         </div>
       </div>
     </div>
+    <SettingsPanel :isVisible="showSettings" />
   </div>
 </template>
 
@@ -140,23 +146,25 @@
 import { defineComponent, ref, onMounted } from "vue";
 import { useRouter } from 'vue-router';
 import FrameComponent from "../components/FrameComponent.vue";
+import SettingsPanel from "../components/SettingsPanel.vue";
 import { categorizePlayer, getCategoryDescription, KELLY_FRACTIONS } from './stats';
 import { goldBalance, bettingHistory } from '../store/gameState';
 import { selectedMarket } from '../store/marketState';
 
 export default defineComponent({
   name: "Stats",
-  components: { FrameComponent },
+  components: { FrameComponent, SettingsPanel },
   setup() {
     const router = useRouter();
+    const showSettings = ref(false);
     
     const playerCategory = ref('');
     const categoryDescription = ref('');
     const stats = ref({
       averageBet: 0,
-      averageBetPercentage: 0,
-      optimalBet: 0,
       optimalBetPercentage: 0,
+      riskTakerBetPercentage: 0,
+      conservativeBetPercentage: 0,
       totalBets: 0,
       optimalBets: 0,
       riskTakerBets: 0,
@@ -177,6 +185,10 @@ export default defineComponent({
       router.back();
     };
 
+    const toggleSettings = () => {
+      showSettings.value = !showSettings.value;
+    };
+
     const handleContinue = () => {
       // Navigate to next screen based on game flow
       router.push('/next-screen');
@@ -188,6 +200,8 @@ export default defineComponent({
       stats,
       goldBalance,
       goBack,
+      toggleSettings,
+      showSettings,
       handleContinue
     };
   }
@@ -195,6 +209,39 @@ export default defineComponent({
 </script>
 
 <style scoped>
+  .title-scroll-icon {
+    position: absolute;
+    width: 320px;
+    height: 80px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+  .title-text {
+    position: absolute;
+    top: 26px;
+    left: 72px;
+    width: 178px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: var(--color-saddlebrown-200);
+    text-shadow: 0.5px 0 0 #492b00, 0 0.5px 0 #492b00, -0.5px 0 0 #492b00,
+      0 -0.5px 0 #492b00;
+    font-family: var(--font-greek);
+    font-size: var(--font-size-21xl);
+    z-index: 2;
+  }
+  .title-container {
+    position: absolute;
+    top: 16px;
+    left: 90px;
+    width: 320px;
+    height: 80px;
+    z-index: 10;
+  }
   .bg-icon1 {
     align-self: stretch;
     position: relative;
@@ -299,6 +346,7 @@ export default defineComponent({
     overflow: hidden;
     object-fit: cover;
     z-index: 2;
+    cursor: pointer;
   }
   .soti1111-scene-of-an-ancient-g-group {
     width: 100%;
@@ -342,8 +390,6 @@ export default defineComponent({
     justify-content: center;
     flex-shrink: 0;
     z-index: 1;
-    padding: 0 20px;
-    text-align: center;
   }
   .average-bet-wrapper {
     align-self: stretch;

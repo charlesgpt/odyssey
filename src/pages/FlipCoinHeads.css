@@ -1,0 +1,247 @@
+.title-scroll-icon {
+  position: absolute;
+  width: 320px;
+  height: 80px;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.title-text {
+  position: absolute;
+  top: 26px;
+  left: 72px;
+  width: 178px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: var(--color-saddlebrown-200);
+  text-shadow: 0.5px 0 0 #492b00, 0 0.5px 0 #492b00, -0.5px 0 0 #492b00,
+    0 -0.5px 0 #492b00;
+  font-family: var(--font-greek);
+  font-size: var(--font-size-21xl);
+  z-index: 2;
+}
+
+.title-container {
+  position: absolute;
+  top: 16px;
+  left: 90px;
+  width: 320px;
+  height: 80px;
+  z-index: 10;
+}
+
+.bg-icon {
+  align-self: stretch;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  display: none;
+  z-index: 1;
+}
+
+.image-103-icon {
+  align-self: stretch;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  display: none;
+  z-index: 2;
+}
+
+.soti1111-scene-of-an-ancient-g-icon {
+  width: 986px;
+  height: 1176px;
+  position: relative;
+  object-fit: cover;
+  display: none;
+  max-width: 100%;
+  z-index: 3;
+}
+
+.flipcoinheads-child {
+  align-self: stretch;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  display: none;
+  z-index: 5;
+}
+
+.soti1111-scene-of-an-ancient-g-icon1 {
+  position: absolute;
+  top: 127px;
+  left: -93px;
+  width: 687px;
+  height: 818px;
+  object-fit: cover;
+}
+
+.frame-child4 {
+  position: absolute;
+  top: 677px;
+  left: 0px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  width: 500px;
+  height: 323px;
+}
+
+.frame-child5 {
+  position: absolute;
+  top: 323px;
+  left: 500px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  width: 500px;
+  height: 323px;
+  transform: rotate(-180deg);
+  transform-origin: 0 0;
+}
+
+.group-section {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.coin-container {
+  position: absolute;
+  top: 540px;
+  left: 160px;
+  width: 179px;
+  height: 179px;
+  z-index: 3;
+}
+
+.coin-icon1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s;
+}
+
+.coin-icon1.flipping {
+  transform: rotateY(1800deg);
+}
+
+.outcome {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-gemfont-one);
+  font-size: var(--font-size-5xl);
+  animation: fadeOut 2s forwards;
+}
+
+.outcome.win {
+  color: #4CAF50;
+}
+
+.outcome.loss {
+  color: #f44336;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+}
+
+.back-button-icon {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  object-fit: cover;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.settings-button-icon {
+  position: absolute;
+  top: 20px;
+  left: 418px;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  object-fit: cover;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.soti1111-scene-of-an-ancient-g-parent {
+  align-self: stretch;
+  height: 1000px;
+  position: relative;
+}
+
+.frame-child6 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0 !important;
+  top: 391px;
+  right: -500px;
+  bottom: -391px;
+  left: 500px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), #000);
+  transform: rotate(-180deg);
+  transform-origin: 0 0;
+  z-index: 1;
+}
+
+.rectangle-parent1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-base) var(--padding-3xs) 224px;
+  position: relative;
+}
+
+.frame-parent3 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 0px 0px 1126px;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin-top: -1000px;
+}
+
+.flipcoinheads {
+  width: 100%;
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+@media screen and (max-width: 450px) {
+  .rectangle-parent1 {
+    padding-top: 1020px;
+    padding-bottom: 146px;
+    box-sizing: border-box;
+  }
+}

@@ -21,9 +21,9 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, watch } from "vue";
 import { goldBalance } from "../store/gameState";
-import { selectedMarket } from "../store/marketState";
+import { selectedMarket, type MarketType } from "../store/marketState";
 
 export default defineComponent({
   name: "FrameComponent5",
@@ -35,17 +35,32 @@ export default defineComponent({
     }
   },
   setup() {
+    // Watch market state changes for debugging
+    watch(selectedMarket, (newMarket) => {
+      console.log('Market state changed:', newMarket);
+    }, { immediate: true });
+
     const marketImage = computed(() => {
-      switch (selectedMarket.value) {
-        case 'bull':
-          return '/bull2@2x.png';
-        case 'bear':
-          return '/bear2@2x.png';
-        case 'choppy':
-          return '/choppy@3x.png';
+      const market = selectedMarket.value;
+      console.log('Computing market image for:', market);
+      
+      let image: string;
+      switch (market) {
+        case 'BULL_MARKET':
+          image = '/bull2@2x.png';
+          break;
+        case 'BEAR_MARKET':
+          image = '/bear2@2x.png';
+          break;
+        case 'CHOPPY_MARKET':
+          image = '/choppy@3x.png';
+          break;
         default:
-          return '/bull2@2x.png';
+          console.log('Unknown market state:', market);
+          image = '/bull2@2x.png';
       }
+      console.log('Selected image:', image);
+      return image;
     });
 
     return {

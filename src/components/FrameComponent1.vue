@@ -7,34 +7,52 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent } from "vue";
-  import type * as CSS from "csstype";
-  import { useRouter } from "vue-router";
+import { defineComponent, inject } from "vue";
+import type * as CSS from "csstype";
+import { useRouter } from "vue-router";
+import { setMarketState } from "../store/marketState";
 
-  export default defineComponent({
-    name: "FrameComponent1",
-    props: {
-      continueTextDecoration: { type: String },
-    },
-    setup() {
-      const router = useRouter();
+export default defineComponent({
+  name: "FrameComponent1",
+  props: {
+    continueTextDecoration: { type: String },
+  },
+  setup() {
+    const router = useRouter();
 
-      const navigateToFlipCoin = () => {
-        router.push("/flipcoinheads");
-      };
+    const navigateToFlipCoin = () => {
+      // Get the current route name to determine which market we're coming from
+      const currentRoute = router.currentRoute.value.name;
+      
+      // Set market state based on the current route
+      switch (currentRoute) {
+        case 'Bull':
+          setMarketState('BULL_MARKET');
+          break;
+        case 'Bear':
+          setMarketState('BEAR_MARKET');
+          break;
+        case 'Choppy':
+          setMarketState('CHOPPY_MARKET');
+          break;
+      }
 
+      // Navigate to flip coin page
+      router.push("/flipcoinheads");
+    };
+
+    return {
+      navigateToFlipCoin
+    };
+  },
+  computed: {
+    continueStyle(): CSS.Properties {
       return {
-        navigateToFlipCoin
+        textDecoration: this.continueTextDecoration,
       };
     },
-    computed: {
-      continueStyle(): CSS.Properties {
-        return {
-          textDecoration: this.continueTextDecoration,
-        };
-      },
-    },
-  });
+  },
+});
 </script>
 <style scoped>
   .button-icon14 {
